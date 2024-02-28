@@ -1,0 +1,54 @@
+
+phase = Baseline
+trial = 1
+
+target = 
+162
+asteroids hit =
+21
+score = 
+125
+
+phase = Baseline
+trial = 2
+
+target = 
+120
+asteroids hit =
+32
+score = 
+245
+
+phase = Baseline
+trial = 3
+
+target = 
+74
+asteroids hit =
+29
+score = 
+335
+
+phase = Treatment
+trial = 4
+
+target = 
+43
+alternative = 
+69
+asteroids hit =
+17
+score = 
+420
+
+phase = Treatment
+trial = 5
+
+target = 
+0
+alternative = 
+47
+asteroids hit =
+11
+score = 
+500
