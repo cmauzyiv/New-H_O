@@ -1,0 +1,93 @@
+
+phase = Baseline
+trial = 1
+target = 
+0
+asteroids hit =
+0
+score = 
+0
+
+phase = Baseline
+trial = 2
+target = 
+0
+asteroids hit =
+6
+score = 
+0
+
+phase = Baseline
+trial = 3
+target = 
+1
+asteroids hit =
+3
+score = 
+5
+
+phase = Treatment
+trial = 4
+target = 
+0
+alternative = 
+0
+asteroids hit =
+1
+score = 
+5
+
+phase = Treatment
+trial = 5
+target = 
+0
+alternative = 
+15
+asteroids hit =
+17
+score = 
+20
+
+phase = Treatment
+trial = 6
+target = 
+6
+alternative = 
+18
+asteroids hit =
+22
+score = 
+55
+
+phase = Extinction
+trial = 7
+target = 
+0
+alternative = 
+50
+asteroids hit =
+21
+score = 
+110
+
+phase = Extinction
+trial = 8
+target = 
+3
+alternative = 
+32
+asteroids hit =
+39
+score = 
+155
+
+phase = Extinction
+trial = 9
+target = 
+0
+alternative = 
+59
+asteroids hit =
+41
+score = 
+215
