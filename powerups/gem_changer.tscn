@@ -1,0 +1,70 @@
+[gd_scene load_steps=14 format=3 uid="uid://q43burr2ouyu"]
+
+[ext_resource type="Script" path="res://powerups/gem_changer.gd" id="1_gecb3"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="1_iytbm"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="2_new8s"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="3_vpcch"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="4_hyhmh"]
+[ext_resource type="Script" path="res://components/hurt_component.gd" id="5_5oa11"]
+[ext_resource type="Script" path="res://components/destroyed_component.gd" id="6_yxj3u"]
+[ext_resource type="Script" path="res://components/gem_changer.gd" id="7_s6ph6"]
+[ext_resource type="Resource" uid="uid://bvu4vyw4rve6q" path="res://game_stats.tres" id="9_ghwmc"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="10_fq5ft"]
+[ext_resource type="PackedScene" uid="uid://b4b4bxh7m7u83" path="res://effects/gem_explosion.tscn" id="11_y0v8r"]
+[ext_resource type="Script" path="res://components/score_component.gd" id="12_vg1xt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tew4c"]
+
+[node name="GemChanger" type="Node2D"]
+script = ExtResource("1_gecb3")
+game_stats = ExtResource("9_ghwmc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tew4c")
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("1_iytbm")
+actor = NodePath("..")
+velocity = Vector2(0, 10)
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("2_new8s")
+health = 2
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_vpcch")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_hyhmh")
+
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("5_5oa11")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+
+[node name="DestroyedComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "stats_component", "destroy_effect_spawner_component")]
+script = ExtResource("6_yxj3u")
+actor = NodePath("..")
+stats_component = NodePath("../StatsComponent")
+destroy_effect_spawner_component = NodePath("../SpawnerComponent")
+
+[node name="GemChangerComponent" type="Node" parent="."]
+script = ExtResource("7_s6ph6")
+game_stats = ExtResource("9_ghwmc")
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("10_fq5ft")
+scene = ExtResource("11_y0v8r")
+
+[node name="ScoreComponent" type="Node" parent="."]
+script = ExtResource("12_vg1xt")
+game_stats = ExtResource("9_ghwmc")
+adjust_amount = 0
+adjust_shots = 0
+adjust_gem_changer_amount = 1

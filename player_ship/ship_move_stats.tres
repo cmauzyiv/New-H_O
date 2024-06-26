@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MoveStats" load_steps=2 format=3 uid="uid://bpyerqy064twg"]
+
+[ext_resource type="Script" path="res://components/move_stats.gd" id="1_2yr64"]
+
+[resource]
+script = ExtResource("1_2yr64")
+speed = 300

@@ -1,0 +1,143 @@
+[gd_scene load_steps=20 format=3 uid="uid://bdbwnf36a420g"]
+
+[ext_resource type="PackedScene" uid="uid://q43burr2ouyu" path="res://powerups/gem_changer.tscn" id="1_ynwjf"]
+[ext_resource type="Texture2D" uid="uid://dlc4np0ymm2hv" path="res://assets/power_up_red_strip14.png" id="2_jfpju"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0877w"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(0, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rlkb"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(68, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm040"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(136, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ho7h"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(204, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfjtj"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(272, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxiuj"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(340, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ynl2"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(408, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a288j"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(476, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbqy6"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(544, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa3eg"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(612, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12aro"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(680, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsw7j"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(748, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68w0g"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(816, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j7jr"]
+atlas = ExtResource("2_jfpju")
+region = Rect2(884, 0, 68, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e0p3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0877w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rlkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm040")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ho7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfjtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxiuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ynl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a288j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbqy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wa3eg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12aro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsw7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68w0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j7jr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r5llw"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ohyjm"]
+radius = 32.0
+
+[node name="PinkGemChanger" instance=ExtResource("1_ynwjf")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_e0p3a")
+autoplay = "default"
+
+[node name="MoveComponent" parent="." index="1"]
+velocity = Vector2(0, 65)
+
+[node name="StatsComponent" parent="." index="2"]
+health = 1
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+shape = SubResource("CircleShape2D_r5llw")
+
+[node name="HitboxComponent" parent="." index="5"]
+damage = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("CircleShape2D_ohyjm")
+
+[node name="GemChangerComponent" parent="." index="8"]
+set_gem_color = 2

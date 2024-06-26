@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://oq12154ulxdr"]
+
+[ext_resource type="Script" path="res://powerups/texture_changer.gd" id="1_gesve"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="2_u2sbq"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="3_jj4kb"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="4_gtvr1"]
+[ext_resource type="Script" path="res://components/animationhitbox_component.gd" id="5_82ehl"]
+
+[node name="TextureChanger" type="Node2D"]
+script = ExtResource("1_gesve")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("2_u2sbq")
+actor = NodePath("..")
+velocity = Vector2(0, 15)
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("3_jj4kb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+script = ExtResource("4_gtvr1")
+
+[node name="AnimationHitBoxComponent" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("5_82ehl")

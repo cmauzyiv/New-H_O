@@ -1,0 +1,36 @@
+
+
+Phase = 
+Baseline
+Session Num = 1
+
+target responses = 10
+
+total shots = 10
+gems collected = 48
+total score = 25
+Power Ups: 
+barrel rolls = 3
+spins = 0
+gem boost = 1
+speed boost = 1
+gem changers = 2
+textures = 0
+
+
+Phase = 
+Baseline
+Session Num = 2
+
+target responses = 10
+
+total shots = 11
+gems collected = 80
+total score = 40
+Power Ups: 
+barrel rolls = 2
+spins = 0
+gem boost = 3
+speed boost = 1
+gem changers = 3
+textures = 0

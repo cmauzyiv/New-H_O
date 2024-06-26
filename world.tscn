@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=3 uid="uid://djham24lr3mj"]
+
+[ext_resource type="PackedScene" uid="uid://cnv7xwaoqucbe" path="res://player_ship/Ship.tscn" id="1_6axpe"]
+[ext_resource type="Script" path="res://world.gd" id="1_bpubj"]
+[ext_resource type="Resource" uid="uid://bvu4vyw4rve6q" path="res://game_stats.tres" id="2_bt5o0"]
+[ext_resource type="PackedScene" uid="uid://ukg7dhooithy" path="res://effects/space_background.tscn" id="2_h4pmy"]
+[ext_resource type="PackedScene" uid="uid://dwrkvxvd8jrra" path="res://enemy_spawner.tscn" id="6_88xph"]
+[ext_resource type="LabelSettings" uid="uid://ct7edt2qagtjd" path="res://fonts/gem_label_settings.tres" id="6_f5hlq"]
+[ext_resource type="LabelSettings" uid="uid://dtgy5vsarbpgi" path="res://fonts/default_label_settings.tres" id="6_ubmbd"]
+[ext_resource type="PackedScene" uid="uid://yxwuxe0dsek6" path="res://powerups/powerup_generator.tscn" id="8_lsq6a"]
+[ext_resource type="PackedScene" uid="uid://da4o8ucjth6e3" path="res://powerups/barrel_roll.tscn" id="11_6pxsk"]
+[ext_resource type="Script" path="res://components/shake_component.gd" id="12_5qjn7"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_bpubj")
+game_stats = ExtResource("2_bt5o0")
+
+[node name="SpaceBackground" parent="." instance=ExtResource("2_h4pmy")]
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 504.0
+offset_top = 728.0
+offset_right = 864.0
+offset_bottom = 769.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "SCORE"
+label_settings = ExtResource("6_ubmbd")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="enemy_spawner" parent="." instance=ExtResource("6_88xph")]
+game_stats = ExtResource("2_bt5o0")
+
+[node name="PowerUpGenerator" parent="." instance=ExtResource("8_lsq6a")]
+BarrelRollScene = ExtResource("11_6pxsk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1400.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -7.5
+offset_right = 10.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PinkLabel" type="Label" parent="Control/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Pink"
+label_settings = ExtResource("6_f5hlq")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -16.5
+offset_bottom = 16.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="GreenLabel" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Green"
+label_settings = ExtResource("6_f5hlq")
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.0
+offset_right = 74.0
+offset_bottom = 8.0
+grow_vertical = 2
+alignment = 1
+
+[node name="BlueLabel" type="Label" parent="Control/HBoxContainer2"]
+layout_mode = 2
+text = "Blue"
+label_settings = ExtResource("6_f5hlq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("12_5qjn7")
+node = NodePath("..")
+
+[node name="BarrelRoll" parent="." instance=ExtResource("11_6pxsk")]
+position = Vector2(400, 448)
+
+[node name="Ship" parent="." instance=ExtResource("1_6axpe")]
+position = Vector2(648, 536)
+
+[node name="DataTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[node name="StreamTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="DataTimer" to="." method="_on_data_timer_timeout"]
+[connection signal="timeout" from="StreamTimer" to="." method="_on_stream_timer_timeout"]

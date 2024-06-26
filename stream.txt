@@ -1,0 +1,270 @@
+1[]
+
+2["barrel_roll"]
+
+3[]
+
+4[]
+
+5[]
+
+6[]
+
+7[]
+
+8[]
+
+9["barrel_roll", "gem"]
+
+10[]
+
+11[]
+
+12["gem"]
+
+13["gem_changer"]
+
+14[]
+
+15["gem"]
+
+16[]
+
+17["gem"]
+
+18[]
+
+19[]
+
+20[9, "target_resp"]
+
+21[]
+
+22["gem"]
+
+23["gem"]
+
+24[]
+
+25[9, "target_resp"]
+
+26[]
+
+27["gem boost"]
+
+28["gem"]
+
+29[]
+
+30[9, "target_resp"]
+
+31["gem"]
+
+32["gem", "gem", "gem", "gem", "gem", "gem", "gem"]
+
+33["gem", "gem", "gem"]
+
+34["gem", "gem", "gem", "gem"]
+
+35["gem", "gem", "gem"]
+
+36["barrel_roll"]
+
+37["gem"]
+
+38["gem", "gem", "gem", "gem", "gem", "gem", "gem", "gem"]
+
+39["gem", "gem", "gem", "gem"]
+
+40["gem_changer", "gem"]
+
+41[]
+
+42["gem", 9, "target_resp"]
+
+43["gem"]
+
+44["speed boost"]
+
+45["gem", "gem"]
+
+46[]
+
+47[9, "target_resp"]
+
+48[9, "target_resp"]
+
+49[9, "target_resp"]
+
+50["gem"]
+
+51[]
+
+52[9, "target_resp"]
+
+53["gem"]
+
+54[]
+
+55[]
+
+56[9, "target_resp"]
+
+57["gem"]
+
+58["gem", "gem"]
+
+59[]
+
+60[9, "target_resp"]
+
+1[]
+
+2["gem"]
+
+3[]
+
+4["gem", "barrel_roll"]
+
+5[]
+
+6[9]
+
+7["target_resp"]
+
+8["gem_changer"]
+
+9["gem"]
+
+10[]
+
+11[9, "target_resp"]
+
+12[]
+
+13[]
+
+14["gem boost"]
+
+15["gem"]
+
+16[]
+
+17[]
+
+18[]
+
+19[]
+
+20[]
+
+21[]
+
+22[]
+
+23[]
+
+24[]
+
+25[]
+
+26["gem"]
+
+27["gem"]
+
+28["gem", "gem"]
+
+29[]
+
+30["gem", 9, "gem", "gem", "target_resp"]
+
+31[9, "barrel_roll", "gem_changer"]
+
+32[]
+
+33[]
+
+34["gem"]
+
+35[9, "target_resp"]
+
+36["gem", 9, "target_resp", 9]
+
+37["target_resp", 9, "target_resp", 9, "target_resp"]
+
+38[9, "target_resp"]
+
+39["gem boost"]
+
+40[]
+
+41[]
+
+42["speed boost", "gem", "gem", "gem", "gem", "gem", "gem"]
+
+43["gem", "gem", "gem", "gem"]
+
+44["gem", "gem", "gem", "gem", "gem", "gem", "gem"]
+
+45["gem", "gem", "gem", "gem", "gem", "gem", "gem", "gem", "gem", "gem"]
+
+46[9, "target_resp"]
+
+47[]
+
+48[]
+
+49["gem", "gem"]
+
+50[]
+
+51["gem"]
+
+52["gem", "gem", "gem"]
+
+53["gem", "gem", "gem"]
+
+54["gem"]
+
+55["gem", "gem"]
+
+56["gem", "gem", "gem", "gem", "gem", "gem", "gem", "gem"]
+
+57["gem", "gem", "gem boost", "gem"]
+
+58["gem", "gem", "gem", "gem_changer", "gem", "gem", "gem", "gem"]
+
+59["gem", "gem", "gem", "gem", "gem", "gem", "gem", "gem"]
+
+60["gem", "gem"]
+
+1["gem", "gem", "gem", "gem"]
+
+2["gem", "gem", "gem boost", "gem", "gem", "gem", "gem"]
+
+3["gem", "gem", "gem", "gem", "gem", "gem", "gem"]
+
+4["gem", "gem", "gem boost"]
+
+5["gem", "gem", "gem", "gem", "gem"]
+
+6["gem", "gem", "gem", "gem", "gem", "gem"]
+
+7["gem", "gem", "gem"]
+
+8["gem", "gem"]
+
+9[]
+
+10["gem", "gem", "gem", "gem"]
+
+11[]
+
+12["gem", "gem"]
+
+13["gem", "gem", "gem", "gem", "gem", "gem", "gem", "gem"]
+
+14["gem", "gem", "gem", "gem", "gem", "gem"]
+
+15["gem", "gem"]
+

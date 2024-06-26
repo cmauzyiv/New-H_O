@@ -1,0 +1,118 @@
+[gd_scene load_steps=17 format=3 uid="uid://c4kw7varoqr5r"]
+
+[ext_resource type="PackedScene" uid="uid://bjwxb0obruewh" path="res://powerups/gem.tscn" id="1_01nkp"]
+[ext_resource type="Texture2D" uid="uid://htg5070ujj2a" path="res://assets/GEM 3 - TURQUOISE - Spritesheet.png" id="2_fwdeb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuckl"]
+atlas = ExtResource("2_fwdeb")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4gso"]
+atlas = ExtResource("2_fwdeb")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arxt7"]
+atlas = ExtResource("2_fwdeb")
+region = Rect2(56, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llb0p"]
+atlas = ExtResource("2_fwdeb")
+region = Rect2(112, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3gd8"]
+atlas = ExtResource("2_fwdeb")
+region = Rect2(140, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6yv1"]
+atlas = ExtResource("2_fwdeb")
+region = Rect2(196, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leb6b"]
+atlas = ExtResource("2_fwdeb")
+region = Rect2(224, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rcih"]
+atlas = ExtResource("2_fwdeb")
+region = Rect2(252, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgx6k"]
+atlas = ExtResource("2_fwdeb")
+region = Rect2(280, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql22o"]
+atlas = ExtResource("2_fwdeb")
+region = Rect2(84, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlqpw"]
+atlas = ExtResource("2_fwdeb")
+region = Rect2(168, 0, 28, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0m5hv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuckl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4gso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arxt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llb0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3gd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6yv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_leb6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rcih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgx6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql22o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlqpw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajxn2"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w2dib"]
+radius = 8.0
+
+[node name="GreenGem" instance=ExtResource("1_01nkp")]
+
+[node name="AnimatedSprite2D" parent="Anchor" index="0"]
+sprite_frames = SubResource("SpriteFrames_0m5hv")
+autoplay = "default"
+
+[node name="MoveComponent" parent="." index="1"]
+velocity = Vector2(0, 65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+shape = SubResource("CircleShape2D_ajxn2")
+
+[node name="HitboxComponent" parent="." index="6"]
+damage = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("CircleShape2D_w2dib")
+
+[node name="ScoreComponent" parent="." index="8"]
+adjust_amount = 0
+adjust_green_gem_amount = 1
+adjust_total_gems_amount = 1

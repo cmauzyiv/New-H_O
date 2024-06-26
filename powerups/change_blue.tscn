@@ -1,0 +1,140 @@
+[gd_scene load_steps=20 format=3 uid="uid://7y1afhb3uagf"]
+
+[ext_resource type="PackedScene" uid="uid://q43burr2ouyu" path="res://powerups/gem_changer.tscn" id="1_qkkbb"]
+[ext_resource type="Texture2D" uid="uid://t0e2y2gc0n48" path="res://assets/power_up_blue_strip14.png" id="2_w1v7q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvgxq"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(0, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkm64"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(68, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m71dp"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(136, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xrcx"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(204, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixghj"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(272, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv7po"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(340, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opgan"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(408, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfbt8"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(476, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tcay"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(544, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wiet3"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(612, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lit47"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(680, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwdgy"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(748, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7wyj"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(816, 0, 68, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3sip"]
+atlas = ExtResource("2_w1v7q")
+region = Rect2(884, 0, 68, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_emjtb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvgxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkm64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m71dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xrcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixghj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv7po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opgan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfbt8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tcay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wiet3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lit47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwdgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7wyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3sip")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2qj6"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4yccu"]
+radius = 32.0
+
+[node name="BlueGemChanger" instance=ExtResource("1_qkkbb")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_emjtb")
+autoplay = "default"
+
+[node name="MoveComponent" parent="." index="1"]
+velocity = Vector2(0, 65)
+
+[node name="StatsComponent" parent="." index="2"]
+health = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+shape = SubResource("CircleShape2D_r2qj6")
+
+[node name="HitboxComponent" parent="." index="5"]
+damage = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("CircleShape2D_4yccu")
+
+[node name="GemChangerComponent" parent="." index="8"]
+set_gem_color = 3

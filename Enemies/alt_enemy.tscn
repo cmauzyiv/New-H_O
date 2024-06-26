@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=3 uid="uid://bdv62g8hjyx2v"]
+
+[ext_resource type="PackedScene" uid="uid://bnwo40ymy21k8" path="res://Enemies/enemy.tscn" id="1_p4fg6"]
+[ext_resource type="Texture2D" uid="uid://dw5emw2yhoqt2" path="res://assets/alt_sheet.png" id="2_ii7q6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovvn8"]
+atlas = ExtResource("2_ii7q6")
+region = Rect2(0, 0, 100, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lfgm"]
+atlas = ExtResource("2_ii7q6")
+region = Rect2(200, 0, 100, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwyxj"]
+atlas = ExtResource("2_ii7q6")
+region = Rect2(300, 0, 100, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pyel"]
+atlas = ExtResource("2_ii7q6")
+region = Rect2(400, 0, 100, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dddnb"]
+atlas = ExtResource("2_ii7q6")
+region = Rect2(600, 0, 100, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqctp"]
+atlas = ExtResource("2_ii7q6")
+region = Rect2(100, 0, 100, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iq27"]
+atlas = ExtResource("2_ii7q6")
+region = Rect2(500, 0, 100, 125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_46h45"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovvn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lfgm")
+}, {
+"duration": 1000.0,
+"texture": SubResource("AtlasTexture_vwyxj")
+}],
+"loop": false,
+"name": &"bank_left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pyel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dddnb")
+}, {
+"duration": 1000.0,
+"texture": SubResource("AtlasTexture_sqctp")
+}],
+"loop": false,
+"name": &"bank_right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iq27")
+}],
+"loop": true,
+"name": &"center",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vhidh"]
+radius = 80.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_egkwe"]
+radius = 80.0
+
+[node name="AltEnemy" instance=ExtResource("1_p4fg6")]
+scale = Vector2(0.9, 0.9)
+
+[node name="AnimatedSprite2D" parent="Anchor" index="0"]
+sprite_frames = SubResource("SpriteFrames_46h45")
+
+[node name="FlameAnimatedSprite2D" parent="Anchor" index="1"]
+position = Vector2(-2, -80)
+scale = Vector2(1, 1)
+frame_progress = 0.306659
+
+[node name="ShieldAnimated" parent="Anchor" index="2"]
+animation = &"default"
+
+[node name="StatsComponent" parent="." index="2"]
+health = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+shape = SubResource("CircleShape2D_vhidh")
+
+[node name="HitboxComponent" parent="." index="8"]
+damage = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("CircleShape2D_egkwe")
+
+[node name="ScoreComponent" parent="." index="14"]
+adjust_alt_responses_amount = 1
+adjust_alt_amount = 1
+
+[node name="MoveComponent" parent="States/MoveDownState" index="0"]
+velocity = Vector2(0, 100)
+
+[node name="BorderBounceComponent" parent="States/MoveSideState" index="1"]
+left_margin = 700
+right_margin = 60
+
+[node name="InvincibleComponent" parent="." index="16"]
+invincible_phase = 2

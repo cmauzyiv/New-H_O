@@ -1,0 +1,105 @@
+[gd_scene load_steps=18 format=3 uid="uid://da4o8ucjth6e3"]
+
+[ext_resource type="Script" path="res://powerups/barrel_roll.gd" id="1_gx2v8"]
+[ext_resource type="Texture2D" uid="uid://daag1xahjtrml" path="res://assets/barrel_roll_icon_sheet.png" id="2_glfk8"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="2_m2wny"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="3_j5xek"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="5_0kqrw"]
+[ext_resource type="Script" path="res://components/animationhitbox_component.gd" id="6_ene6k"]
+[ext_resource type="Script" path="res://components/score_component.gd" id="7_2w6ue"]
+[ext_resource type="Script" path="res://components/hurt_component.gd" id="8_coq6l"]
+[ext_resource type="Resource" uid="uid://bvu4vyw4rve6q" path="res://game_stats.tres" id="8_ene6p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7tgm"]
+atlas = ExtResource("2_glfk8")
+region = Rect2(0, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrinm"]
+atlas = ExtResource("2_glfk8")
+region = Rect2(120, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q67ew"]
+atlas = ExtResource("2_glfk8")
+region = Rect2(240, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xj5t"]
+atlas = ExtResource("2_glfk8")
+region = Rect2(360, 0, 120, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so7dd"]
+atlas = ExtResource("2_glfk8")
+region = Rect2(480, 0, 120, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g2ofm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7tgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrinm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q67ew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xj5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so7dd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x67fi"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cwb3g"]
+radius = 16.0
+
+[node name="BarrelRoll" type="Node2D"]
+script = ExtResource("1_gx2v8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g2ofm")
+autoplay = "default"
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("2_m2wny")
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("3_j5xek")
+actor = NodePath("..")
+velocity = Vector2(0, 65)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("5_0kqrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_x67fi")
+
+[node name="AnimationHitBoxComponent" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("6_ene6k")
+animation = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimationHitBoxComponent"]
+shape = SubResource("CircleShape2D_cwb3g")
+
+[node name="ScoreComponent" type="Node" parent="."]
+script = ExtResource("7_2w6ue")
+game_stats = ExtResource("8_ene6p")
+adjust_amount = 0
+adjust_shots = 0
+adjust_barrel_rolls_amount = 1
+
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("8_coq6l")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")

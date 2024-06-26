@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="GameStats" load_steps=2 format=3 uid="uid://bvu4vyw4rve6q"]
+
+[ext_resource type="Script" path="res://game_stats.gd" id="1_be1cc"]
+
+[resource]
+script = ExtResource("1_be1cc")
+phase = 0
+total_shots = 0
+score = 0
+highscore = 0
+alt_count = 0
+alt_responses = 0
+target_responses = 0
+target_count = 0
+green_gems = 0
+pink_gems = 0
+blue_gems = 0
+total_gems = 0
+gem_color = 2
+max_gems = 0
+barrel_rolls = 0
+spins = 0
+speed_boost = 0
+textures = 0
+gem_changer = 0

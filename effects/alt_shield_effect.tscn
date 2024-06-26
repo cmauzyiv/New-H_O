@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dulwrmmhyafb"]
+
+[ext_resource type="Texture2D" uid="uid://b3whu4u7u113h" path="res://assets/alt_shield.png" id="1_83avl"]
+[ext_resource type="Script" path="res://components/onetime_animated_effect.gd" id="1_g8s7c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdbgi"]
+atlas = ExtResource("1_83avl")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvoiu"]
+atlas = ExtResource("1_83avl")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgjif"]
+atlas = ExtResource("1_83avl")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ak7c"]
+atlas = ExtResource("1_83avl")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwmq1"]
+atlas = ExtResource("1_83avl")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nreew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdbgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvoiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgjif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ak7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwmq1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AltShieldEffect" type="AnimatedSprite2D"]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_nreew")
+autoplay = "default"
+script = ExtResource("1_g8s7c")

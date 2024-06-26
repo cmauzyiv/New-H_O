@@ -1,0 +1,219 @@
+[gd_scene load_steps=20 format=3 uid="uid://dpy3jh3ito750"]
+
+[ext_resource type="Script" path="res://powerups/max_gems.gd" id="1_qudtb"]
+[ext_resource type="Texture2D" uid="uid://nmecpb5pc1g1" path="res://assets/max_gems.png" id="2_ee2ob"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="3_dmy4e"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="4_lhlgt"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="5_telkx"]
+[ext_resource type="Script" path="res://components/hurt_component.gd" id="6_ex1u2"]
+[ext_resource type="Script" path="res://components/score_component.gd" id="7_l6vdr"]
+[ext_resource type="Resource" uid="uid://bvu4vyw4rve6q" path="res://game_stats.tres" id="8_5f1ur"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8t06k"]
+radius = 32.0
+
+[sub_resource type="Animation" id="Animation_x463p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_peeqm"]
+resource_name = "bank_left"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 6, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_pkr3l"]
+resource_name = "bank_right"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.306981, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 25, 26, 24]
+}
+
+[sub_resource type="Animation" id="Animation_vpm8x"]
+resource_name = "barrel_left"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [10, 11, 1, 0, 12, 13, 14, 15, 16, 17, 19, 18, 20, 21, 22, 23, 24, 26, 25, 5, 7]
+}
+
+[sub_resource type="Animation" id="Animation_bh3xk"]
+resource_name = "barrel_right"
+length = 1.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [25, 24, 23, 4, 2, 22, 3, 21, 20, 18, 19, 17, 16, 15, 14, 13, 12, 0, 1, 11, 10, 9, 8, 7]
+}
+
+[sub_resource type="Animation" id="Animation_5shd4"]
+resource_name = "hold_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_45ynl"]
+resource_name = "hold_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="Animation" id="Animation_0vi2b"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_hiaom"]
+resource_name = "spin"
+length = 1.25
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.225, 0.5, 0.75, 1, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0472, 2.0944, 3.14159, 4.18879, 5.23599, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmi6k"]
+_data = {
+"RESET": SubResource("Animation_x463p"),
+"bank_left": SubResource("Animation_peeqm"),
+"bank_right": SubResource("Animation_pkr3l"),
+"barrel_left": SubResource("Animation_vpm8x"),
+"barrel_right": SubResource("Animation_bh3xk"),
+"hold_left": SubResource("Animation_5shd4"),
+"hold_right": SubResource("Animation_45ynl"),
+"idle": SubResource("Animation_0vi2b"),
+"spin": SubResource("Animation_hiaom")
+}
+
+[node name="MaxGems" type="Node2D"]
+script = ExtResource("1_qudtb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ee2ob")
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("3_dmy4e")
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("4_lhlgt")
+actor = NodePath("..")
+velocity = Vector2(0, 65)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("5_telkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_8t06k")
+
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("6_ex1u2")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+
+[node name="MaxGemsTimer" type="Timer" parent="."]
+wait_time = 7.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Anchor/Sprite2D")
+speed_scale = 1.5
+libraries = {
+"": SubResource("AnimationLibrary_nmi6k")
+}
+
+[node name="ScoreComponent" type="Node" parent="."]
+script = ExtResource("7_l6vdr")
+game_stats = ExtResource("8_5f1ur")
+adjust_amount = 0
+adjust_shots = 0
+adjust_max_gems_amount = 1

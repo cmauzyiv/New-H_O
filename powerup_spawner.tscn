@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4d1cop4twr3j"]
+
+[sub_resource type="GDScript" id="GDScript_no7ie"]
+script/source = "extends Node2D
+
+
+@export var game_stats: GameStats
+
+
+@onready var pink_gem = preload(\"res://powerups/pink_gem.tscn\")
+@onready var alt_enemy = preload(\"res://Enemies/alt_enemy.tscn\")
+@onready var target_enemy = preload(\"res://Enemies/target_enemy.tscn\")
+var margin = 8
+var screen_width = ProjectSettings.get_setting(\"display/window/size/viewport_width\")
+
+
+
+func check_alt_counts(new_alt_count: int):
+	if game_stats.alt_count == 0:
+		alt_spawner_timer.start()
+
+
+func check_target_counts(new_target_count: int):
+	if game_stats.target_count == 0:
+		target_spawner_timer.start()
+
+func _ready() -> void:
+	alt_spawner_timer.timeout.connect(spawn_alt)
+	target_spawner_timer.timeout.connect(spawn_target)
+
+func spawn_alt(): 
+	var altinst = alt_enemy.instantiate()
+	add_child(altinst)
+	altinst.position = Vector2(randf_range(margin, screen_width), -5)
+	game_stats.alt_count += 1
+	
+func spawn_target():
+	var targetinst = target_enemy.instantiate()
+	add_child(targetinst)
+	targetinst.position = Vector2(randf_range(margin, screen_width), -5)
+	game_stats.target_count += 1
+"
+
+[node name="PowerupSpawner" type="Node2D"]
+script = SubResource("GDScript_no7ie")
+alt_count = null
+target_count = null
+
+[node name="PinkTimer" type="Timer" parent="."]

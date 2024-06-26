@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://ukg7dhooithy"]
+
+[ext_resource type="Texture2D" uid="uid://dceye5dinyxh7" path="res://assets/bg_p1.png" id="1_jwix6"]
+[ext_resource type="Script" path="res://effects/space_background.gd" id="1_xslpy"]
+[ext_resource type="Texture2D" uid="uid://bfiqi0bkrvo4" path="res://assets/stars_00.png" id="2_tsh55"]
+[ext_resource type="Texture2D" uid="uid://drhmiydb50kio" path="res://assets/stars_01.png" id="3_oblls"]
+[ext_resource type="Texture2D" uid="uid://rj2f1mra8y4m" path="res://assets/bg_p2.png" id="3_slnos"]
+[ext_resource type="Texture2D" uid="uid://bhbyd143mhry4" path="res://assets/bg_sd.png" id="4_ge1wu"]
+[ext_resource type="Texture2D" uid="uid://c4404vkyltxvy" path="res://assets/bg_sdelta.png" id="5_e1x7g"]
+
+[node name="SpaceBackground" type="ParallaxBackground"]
+script = ExtResource("1_xslpy")
+
+[node name="SpaceLayer" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+motion_mirroring = Vector2(0, 800)
+
+[node name="P1Background" type="TextureRect" parent="SpaceLayer"]
+offset_right = 1400.0
+offset_bottom = 800.0
+texture = ExtResource("1_jwix6")
+expand_mode = 2
+
+[node name="P2Background" type="TextureRect" parent="SpaceLayer"]
+visible = false
+offset_right = 1400.0
+offset_bottom = 800.0
+texture = ExtResource("3_slnos")
+expand_mode = 3
+
+[node name="P3Background" type="TextureRect" parent="SpaceLayer"]
+visible = false
+offset_right = 360.0
+offset_bottom = 240.0
+texture = ExtResource("4_ge1wu")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="P4Background" type="TextureRect" parent="SpaceLayer"]
+visible = false
+offset_right = 1400.0
+offset_bottom = 800.0
+texture = ExtResource("5_e1x7g")
+expand_mode = 3
+
+[node name="FarStarsLayer" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+motion_mirroring = Vector2(0, 800)
+
+[node name="FarStars" type="TextureRect" parent="FarStarsLayer"]
+offset_right = 1400.0
+offset_bottom = 800.0
+texture = ExtResource("2_tsh55")
+expand_mode = 1
+
+[node name="CloseStarsLayer" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+motion_mirroring = Vector2(0, 800)
+
+[node name="CloseStars" type="TextureRect" parent="CloseStarsLayer"]
+offset_right = 1400.0
+offset_bottom = 800.0
+texture = ExtResource("3_oblls")
+expand_mode = 1
+stretch_mode = 1

@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjwxb0obruewh"]
+
+[ext_resource type="Script" path="res://powerups/gem.gd" id="1_nphrn"]
+[ext_resource type="Resource" uid="uid://bvu4vyw4rve6q" path="res://game_stats.tres" id="2_hw1ht"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="2_qs8t6"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="3_4uoum"]
+[ext_resource type="Script" path="res://components/hurt_component.gd" id="4_8siyd"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="5_o0pq2"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="6_4q3wv"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="7_x0wfk"]
+[ext_resource type="PackedScene" uid="uid://b4b4bxh7m7u83" path="res://effects/gem_explosion.tscn" id="8_3aekf"]
+[ext_resource type="Script" path="res://components/score_component.gd" id="8_n6chx"]
+[ext_resource type="Script" path="res://components/destroyed_component.gd" id="9_pib6g"]
+
+[node name="Gem" type="Node2D"]
+script = ExtResource("1_nphrn")
+game_stats = ExtResource("2_hw1ht")
+
+[node name="Anchor" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor"]
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("2_qs8t6")
+actor = NodePath("..")
+velocity = Vector2(0, 15)
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("3_4uoum")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("4_8siyd")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("6_4q3wv")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("5_o0pq2")
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("7_x0wfk")
+scene = ExtResource("8_3aekf")
+
+[node name="ScoreComponent" type="Node" parent="."]
+script = ExtResource("8_n6chx")
+game_stats = ExtResource("2_hw1ht")
+
+[node name="DestroyedComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "stats_component", "destroy_effect_spawner_component")]
+script = ExtResource("9_pib6g")
+actor = NodePath("..")
+stats_component = NodePath("../StatsComponent")
+destroy_effect_spawner_component = NodePath("../SpawnerComponent")

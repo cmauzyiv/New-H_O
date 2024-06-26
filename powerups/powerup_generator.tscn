@@ -1,0 +1,70 @@
+[gd_scene load_steps=15 format=3 uid="uid://yxwuxe0dsek6"]
+
+[ext_resource type="Script" path="res://Enemies/enemy_generator.gd" id="1_asjyb"]
+[ext_resource type="PackedScene" uid="uid://bawdneh1ltw53" path="res://powerups/pink_gem.tscn" id="2_6rpkf"]
+[ext_resource type="PackedScene" uid="uid://c4kw7varoqr5r" path="res://powerups/green_gem.tscn" id="3_scggw"]
+[ext_resource type="PackedScene" uid="uid://dys0lrdm861qx" path="res://powerups/blue_gem.tscn" id="4_i2fr2"]
+[ext_resource type="PackedScene" uid="uid://b1pssp37qix1" path="res://powerups/change_green.tscn" id="5_2keyf"]
+[ext_resource type="Resource" uid="uid://bvu4vyw4rve6q" path="res://game_stats.tres" id="5_eqcad"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="6_5n26f"]
+[ext_resource type="PackedScene" uid="uid://7y1afhb3uagf" path="res://powerups/change_blue.tscn" id="6_jayg2"]
+[ext_resource type="PackedScene" uid="uid://bdbwnf36a420g" path="res://powerups/change_pink.tscn" id="7_avljl"]
+[ext_resource type="PackedScene" uid="uid://c4b05dn7y40kx" path="res://powerups/spin.tscn" id="8_5ugsl"]
+[ext_resource type="PackedScene" uid="uid://citdvd3olddoj" path="res://powerups/gold_texture_changer.tscn" id="9_03cln"]
+[ext_resource type="PackedScene" uid="uid://kmvu63075enw" path="res://powerups/raindbow_changer.tscn" id="10_dhxoo"]
+[ext_resource type="PackedScene" uid="uid://dpy3jh3ito750" path="res://powerups/max_gems.tscn" id="11_epp80"]
+[ext_resource type="PackedScene" uid="uid://dnbmgi50xq1bd" path="res://powerups/speed_boost.tscn" id="12_mbxmg"]
+
+[node name="PowerUpGenerator" type="Node2D"]
+script = ExtResource("1_asjyb")
+PinkGemScene = ExtResource("2_6rpkf")
+GreenGemScene = ExtResource("3_scggw")
+BlueGemScene = ExtResource("4_i2fr2")
+GreenChangerScene = ExtResource("5_2keyf")
+BlueChangerScene = ExtResource("6_jayg2")
+PinkChangerScene = ExtResource("7_avljl")
+SpinScene = ExtResource("8_5ugsl")
+GoldTextureScene = ExtResource("9_03cln")
+RainbowTextureScene = ExtResource("10_dhxoo")
+MaxGemsScene = ExtResource("11_epp80")
+HyperspeedScene = ExtResource("12_mbxmg")
+game_stats = ExtResource("5_eqcad")
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("6_5n26f")
+
+[node name="PinkGemSpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="GreenGemSpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="BlueGemSpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="GreenChangerSpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="GemChangerTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="GemChangerSpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="PowerUpTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="GemSpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="TextureTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="MaxGemsTimer" type="Timer" parent="."]
+wait_time = 7.0

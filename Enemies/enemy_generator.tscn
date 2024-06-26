@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://bajr2yom10wg0"]
+
+[ext_resource type="Script" path="res://Enemies/enemy_generator.gd" id="1_td4r5"]
+[ext_resource type="PackedScene" uid="uid://bdv62g8hjyx2v" path="res://Enemies/alt_enemy.tscn" id="2_1fiun"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="2_4dahb"]
+[ext_resource type="PackedScene" uid="uid://c0f4o6mkjmab8" path="res://Enemies/target_enemy.tscn" id="3_kljgh"]
+[ext_resource type="PackedScene" uid="uid://hc67n0n3gkg5" path="res://Enemies/alt_1_enemy.tscn" id="4_25as1"]
+[ext_resource type="Resource" uid="uid://bvu4vyw4rve6q" path="res://game_stats.tres" id="5_a0c5f"]
+
+[node name="EnemyGenerator" type="Node2D"]
+script = ExtResource("1_td4r5")
+AltEnemyScene = ExtResource("2_1fiun")
+TargetEnemyScene = ExtResource("3_kljgh")
+Alt1EnemyScene = ExtResource("4_25as1")
+game_stats = ExtResource("5_a0c5f")
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("2_4dahb")
+
+[node name="AltSpawnerTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="TargetSpawnerTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Alt1SpawnerTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
